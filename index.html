@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pitch Matching Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="hero">
+      <h1 class="app-title">Match The Pitch! 🎶</h1>
+      <h1 class="app-title-smaller"></h1>
+      <p class="app-subtitle">
+        Your job is to identify the note being played! Click <strong>Begin Game</strong> and you will hear a note, then try and find it on the piano below.
+        <br>Select a key to highlight it, then press <strong>Submit Answer</strong> (or press the <strong>Space Bar</strong>). Press 'r' to replay the note.
+      </p>
+    </header>
+
+    <section class="controlsPanel controlsPanelActions" aria-label="actions">
+      <div class="control">
+        <div class="controlHeader">
+          <div class="controlHeaderTitle"></div>
+        </div>
+
+        <div class="actionsRow">
+          <button id="beginBtn" type="button" class="primary pulse">Begin Game</button>
+          <button id="replayBtn" type="button" disabled>Replay Note</button>
+          <button id="submitBtn" type="button" class="primary" disabled>Submit Answer</button>
+          <button id="nextBtn" type="button" disabled>Next</button>
+          <button id="downloadScoreBtn" type="button">Download Score Card!</button>
+
+          <label class="inlineControl inlineControlRow">
+            <span class="inlineLabel">Keyboard range</span>
+            <select id="keyboardRange" class="compactSelect">
+              <option value="4oct-c2">4 octaves (C2–C6)</option>
+              <option value="3oct-c3">3 octaves (C3–C6)</option>
+              <option value="2oct-c3">2 octaves (C3–C5)</option>
+              <option value="1oct-c4">1 octave (C4–C5)</option>
+            </select>
+          </label>
+
+          <label class="inlineControl inlineControlRow">
+            <span class="inlineLabel">Note highlight colour</span>
+            <input id="highlightColor" class="colorInput" type="color" value="#4da3ff" aria-label="Note highlight colour" />
+          </label>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="analysis" aria-label="feedback">
+      <div class="analysisGrid feedbackGridPitch">
+        <div class="analysisCard">
+          <div class="analysisLabel">Result</div>
+          <div class="analysisBody" id="feedbackOut">Press <strong>Begin Game</strong> to start.</div>
+        </div>
+
+        <div class="analysisCard">
+          <div class="analysisLabel">Score Card</div>
+          <div class="analysisBody scoreBody" id="scoreOut">—</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stage" aria-label="piano keyboard">
+      <div id="mount" class="mount"></div>
+    </section>
+
+    <footer class="endnotes">
+    </footer>
+  </div>
+
+  <div class="modal hidden" id="streakModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modalCard">
+      <div class="modalTitle" id="modalTitle">New Longest Streak!</div>
+      <div class="modalBody" id="modalBody">—</div>
+      <div class="modalActions">
+        <button id="modalDownload" type="button">Download Record PNG</button>
+        <button id="modalClose" type="button" class="primary">Close</button>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
