@@ -479,16 +479,11 @@ enableScrollForwardingToParent();
     renderScore();
   
    if (autoplay && targetPitch != null) {
-  setResult("Which pitch was that? Press <strong>R</strong> or <strong>Replay Note</strong> to hear again! 🔉");
-  await new Promise(requestAnimationFrame); // lets the browser paint the text first
   stopAllNotes(0.2);
   await playPitch(targetPitch, 1);
-} else {
-  setResult("Which pitch was that? Press <strong>R</strong> or <strong>Replay Note</strong> to hear again!");
 }
 
 updateControlsEnabled();
-
 
   async function replayTarget() {
     if (!started || targetPitch == null) return;
