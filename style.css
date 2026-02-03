@@ -3,6 +3,7 @@
   --text:#111;
   --pulseColor:#4da3ff;
   --pulseRGBA: rgba(77,163,255,0.28);
+  --text-max: 1000px;
 }
 
 *{box-sizing:border-box}
@@ -53,7 +54,7 @@ select{
   width:100%;
   padding:0 10px;
   border-radius:12px;
-  border:px solid rgba(0,0,0,.2);
+  border:1px solid rgba(0,0,0,.2);
   background:#fff;
   cursor:pointer;
   font-weight:700;
@@ -225,7 +226,7 @@ button:disabled{opacity:.45;cursor:not-allowed;transform:none}
 
 .actionsRow{display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap}
 
-.inlineControlRow{min-width:220px}
+.inlineControlRow{min-width:160px}
 
 @media (max-width:980px){
   .inlineControlRow{min-width:unset;width:100%}
@@ -305,4 +306,63 @@ button:disabled{opacity:.45;cursor:not-allowed;transform:none}
 
 .actionHint{
   text-align:center;
+}
+
+/* Keep text/UI areas narrower, leave keyboard area alone */
+.hero,
+.controlsPanel,
+.analysis,
+.feedbackLine,
+.endnotes{
+  max-width: var(--text-max);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* Center top action buttons */
+.actionsCentered{
+  justify-content:center;
+}
+
+/* Highlight button styling */
+.highlightBtn{
+  background: var(--pulseColor);
+  color:#fff;
+  border-color:rgba(0,0,0,.2);
+}
+
+
+/* Highlight picker: looks like a button but uses native <input type="color"> */
+.highlightPick{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  height:38px;
+  padding:0 14px;
+  border-radius:12px;
+  border:1px solid rgba(0,0,0,.2);
+  background: var(--pulseColor);
+  color:#fff;
+  cursor:pointer;
+  font-weight:800;
+  user-select:none;
+  font-size: 14px;
+}
+
+.highlightPickFace{line-height:1}
+
+.highlightPickInput{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  opacity:0;
+  cursor:pointer;
+  border:none;
+  padding:0;
+  margin:0;
+  -webkit-appearance:none;
+  appearance:none;
 }

@@ -18,7 +18,7 @@
   const RADIUS = 18;
   const WHITE_CORNER_R = 10;
 
-  const PRESELECT_COLOR_DEFAULT = "#0099ff";
+  const PRESELECT_COLOR_DEFAULT = "#6699ff";
   const CORRECT_COLOR = "#34c759";
   const WRONG_COLOR = "#ff6b6b";
 
@@ -55,7 +55,6 @@
   const mount = $("mount");
   const keyboardRangeSel = $("keyboardRange");
   const highlightColorInput = $("highlightColor");
-
   const beginBtn = $("beginBtn");
   const replayBtn = $("replayBtn");
   const submitBtn = $("submitBtn");
@@ -716,7 +715,7 @@ async function beginGame() {
 
     ctx.fillStyle = "#fff";
     ctx.font = "900 30px Arial";
-    ctx.fillText("Pitch Matching Test — Score Card", 28, 56);
+    ctx.fillText("Match The Pitch! — Scorecard", 28, 56);
 
     const bodyX = 28;
     const bodyY = 130;
@@ -744,10 +743,10 @@ async function beginGame() {
 
     ctx.fillStyle = "rgba(0,0,0,0.65)";
     ctx.font = "700 16px Arial";
-    ctx.fillText("Downloaded from the Pitch Matching Test 🎶", bodyX, h - 36);
+    ctx.fillText("Downloaded from www.eartraininglab.com 🎶", bodyX, h - 36);
 
     const blob = await canvasToPngBlob(canvas);
-    if (blob) downloadBlob(blob, "pitch-matching-score-card.png");
+    if (blob) downloadBlob(blob, "Match The Pitch Scorecard.png");
   }
 
   async function downloadRecordPng(streakValue, playerName) {
@@ -764,7 +763,7 @@ async function beginGame() {
 
     ctx.fillStyle = "#fff";
     ctx.font = "900 30px Arial";
-    ctx.fillText("Pitch Matching Test — Record", 28, 56);
+    ctx.fillText("Match The Pitch! — Record", 28, 56);
 
     ctx.fillStyle = "#111";
     ctx.font = "900 28px Arial";
@@ -772,15 +771,15 @@ async function beginGame() {
 
     ctx.font = "700 22px Arial";
     ctx.fillStyle = "#111";
-    const msg = `${playerName} just scored ${streakValue} correct answers in a row on the pitch matching test! 🎉🎶🥳`;
+    const msg = `${playerName} just scored ${streakValue} correct answers in a row on the Match The Pitch! game 🎉🎶🥳`;
     drawWrappedText(ctx, msg, 28, 200, w - 56, 34);
 
     ctx.fillStyle = "rgba(0,0,0,0.65)";
     ctx.font = "700 16px Arial";
-    ctx.fillText("Downloaded from the Pitch Matching Test 🎶", 28, h - 36);
+    ctx.fillText("Downloaded from www.eartraininglab.com 🎶", 28, h - 36);
 
     const blob = await canvasToPngBlob(canvas);
-    if (blob) downloadBlob(blob, "pitch-matching-record.png");
+    if (blob) downloadBlob(blob, "Match The Pitch Scorecard.png");
   }
 
   // ---------- Keyboard SVG ----------
@@ -1092,7 +1091,6 @@ async function beginGame() {
     });
 
     highlightColorInput.addEventListener("change", () => applyHighlightColor(highlightColorInput.value));
-
     document.addEventListener("keydown", async (e) => {
       if (!started) return;
 
