@@ -152,7 +152,7 @@ button:disabled{opacity:.45;cursor:not-allowed;transform:none}
 }
 
 .analysisGrid{display:grid;gap:12px;;margin:0 auto}
-.feedbackGridPitch{grid-template-columns: 1fr 1fr;}
+.feedbackGridPitch{grid-template-columns: 1fr;}
 
 .analysisCard{
   border:1px solid rgba(0,0,0,.2);
@@ -218,7 +218,7 @@ button:disabled{opacity:.45;cursor:not-allowed;transform:none}
 .modalActions{margin-top:14px;display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap}
 
 @media (max-width:980px){
-  .feedbackGridPitch{grid-template-columns:minmax(420px, 1fr) 360px}
+  .feedbackGridPitch{grid-template-columns:1fr}
   .compactSelect{max-width:100%}
 }
 
@@ -287,3 +287,22 @@ button:disabled{opacity:.45;cursor:not-allowed;transform:none}
   .scoreItem{flex-direction:column; align-items:flex-start;}
 }
 
+
+
+/* Responsive keyboard scaling */
+.mount{overflow-x:hidden;}
+.mount svg{width:100%;height:auto;}
+
+/* Feedback line between score and keyboard */
+.feedbackLine{
+  margin:10px auto 0;
+  padding:0px 0px;
+  text-align:center;
+  font-size:14px;
+  font-weight:400;
+  opacity:.92;
+}
+
+.actionHint{
+  text-align:center;
+}

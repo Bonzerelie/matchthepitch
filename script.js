@@ -566,7 +566,7 @@ enableScrollForwardingToParent();
 
       awaitingNext = true;
       updateControlsEnabled();
-      actionHint.innerHTML = "Correct! Press <strong>Next</strong> (or <strong>Space</strong>) for the next note.";
+      if (actionHint) actionHint.innerHTML = "Correct! Press <strong>Next</strong> (or <strong>Space</strong>) for the next note.";
 
       return;
     }
@@ -576,14 +576,16 @@ enableScrollForwardingToParent();
     considerStreakForLongestOnFail(prevStreak);
 
     const noteName = pitchLabel(targetPitch);
-    setResult(`Uh oh! That was incorrect ❌ The note played was actually <strong>${noteName}</strong>. Try again!`);
+    setResult(`Incorrect ❌ The note played was <strong>${noteName}</strong>.`);
 
     showKeyWrong(pickedPitch);
     showKeyCorrect(targetPitch);
 
     pickedPitch = null;
+    awaitingNext = true;
     renderScore();
     updateControlsEnabled();
+    if (actionHint) actionHint.innerHTML = "Press <strong>Next</strong> (or <strong>Space</strong>) for the next note.";
   }
 
   function resetScoreAndRestart() {
@@ -895,7 +897,13 @@ async function beginGame() {
       viewBox: `0 0 ${outerW} ${OUTER_H}`,
       role: "img",
       "aria-label": "Keyboard",
+      preserveAspectRatio: "xMidYMid meet",
     });
+
+    // Responsive sizing: shrink to fit container, but never upscale beyond natural width.
+    s.style.width = "100%";
+    s.style.maxWidth = `${outerW}px`;
+    s.style.height = "auto";
 
     const style = el("style");
     style.textContent = `
@@ -1115,7 +1123,7 @@ async function beginGame() {
     renderScore();
     updateBeginButton();
     updateControlsEnabled();
-    actionHint.innerHTML = "Tip: press <strong>R</strong> to replay, <strong>Space</strong>/<strong>Enter</strong> to submit.";
+    if (actionHint) actionHint.innerHTML = "Tip: press <strong>R</strong> to replay, <strong>Space</strong>/<strong>Enter</strong> to submit.";
     setResult("Press <strong>Begin Game</strong> to start.");
   }
 
